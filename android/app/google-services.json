@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "801927235554",
+    "project_id": "fluttertp3-7f232",
+    "storage_bucket": "fluttertp3-7f232.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801927235554:android:bed950533d043efce01bbb",
+        "android_client_info": {
+          "package_name": "com.sensors.iotflutterapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcngd-YluRwLPcQ5dtFewfFgcxH9-JQzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,1 @@
+ /home/etudiant/Téléchargements/flutter-login-screen-firebase-main/.dart_tool/flutter_build/dc41ffac5d84bb7acd4a76daa887d2bf/native_assets.json: 
