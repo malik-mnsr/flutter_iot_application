@@ -350,6 +350,12 @@
       "languageVersion": "3.6"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///home/etudiant/.pub-cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "json_annotation",
       "rootUri": "file:///home/etudiant/.pub-cache/hosted/pub.dev/json_annotation-4.9.0",
       "packageUri": "lib/",

@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../model/user.dart';
+import '../services/history_service.dart';
 
 class SensorData {
   final double temperature;
@@ -90,13 +92,19 @@ class ESP32Service {
 
   // ==================== LED Control ====================
 
-  static Future<Map<String, dynamic>?> turnOn() async {
+  static Future<Map<String, dynamic>?> turnOn({User? user}) async {
     try {
       final response = await http.get(
         Uri.parse('$baseUrl/on'),
       ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
+        // Ajouter à l'historique
+        await HistoryService().addOperation(
+          operation: 'LED Allumée',
+          details: 'LED allumée manuellement',
+          user: user,
+        );
         return json.decode(response.body);
       }
       return null;
@@ -106,13 +114,19 @@ class ESP32Service {
     }
   }
 
-  static Future<Map<String, dynamic>?> turnOff() async {
+  static Future<Map<String, dynamic>?> turnOff({User? user}) async {
     try {
       final response = await http.get(
         Uri.parse('$baseUrl/off'),
       ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
+        // Ajouter à l'historique
+        await HistoryService().addOperation(
+          operation: 'LED Éteinte',
+          details: 'LED éteinte manuellement',
+          user: user,
+        );
         return json.decode(response.body);
       }
       return null;
@@ -122,13 +136,19 @@ class ESP32Service {
     }
   }
 
-  static Future<Map<String, dynamic>?> toggle() async {
+  static Future<Map<String, dynamic>?> toggle({User? user}) async {
     try {
       final response = await http.get(
         Uri.parse('$baseUrl/toggle'),
       ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
+        // Ajouter à l'historique
+        await HistoryService().addOperation(
+          operation: 'LED Basculée',
+          details: 'LED basculée manuellement',
+          user: user,
+        );
         return json.decode(response.body);
       }
       return null;
@@ -140,13 +160,19 @@ class ESP32Service {
 
   // ==================== Auto Mode ====================
 
-  static Future<Map<String, dynamic>?> enableAutoMode() async {
+  static Future<Map<String, dynamic>?> enableAutoMode({User? user}) async {
     try {
       final response = await http.get(
         Uri.parse('$baseUrl/auto/on'),
       ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
+        // Ajouter à l'historique
+        await HistoryService().addOperation(
+          operation: 'Mode Auto Activé',
+          details: 'Mode automatique activé',
+          user: user,
+        );
         return json.decode(response.body);
       }
       return null;
@@ -156,13 +182,19 @@ class ESP32Service {
     }
   }
 
-  static Future<Map<String, dynamic>?> disableAutoMode() async {
+  static Future<Map<String, dynamic>?> disableAutoMode({User? user}) async {
     try {
       final response = await http.get(
         Uri.parse('$baseUrl/auto/off'),
       ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
+        // Ajouter à l'historique
+        await HistoryService().addOperation(
+          operation: 'Mode Auto Désactivé',
+          details: 'Mode automatique désactivé',
+          user: user,
+        );
         return json.decode(response.body);
       }
       return null;
@@ -215,6 +247,7 @@ class ESP32Service {
   static Future<Map<String, dynamic>?> setTemperatureThreshold({
     required double value,
     required bool enabled,
+    User? user,
   }) async {
     try {
       final response = await http.get(
@@ -222,6 +255,12 @@ class ESP32Service {
       ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
+        // Ajouter à l'historique
+        await HistoryService().addOperation(
+          operation: 'Seuil Température Modifié',
+          details: 'Seuil température: ${value.toStringAsFixed(1)}°C (${enabled ? 'activé' : 'désactivé'})',
+          user: user,
+        );
         return json.decode(response.body);
       }
       return null;
@@ -234,6 +273,7 @@ class ESP32Service {
   static Future<Map<String, dynamic>?> setLightThreshold({
     required int value,
     required bool enabled,
+    User? user,
   }) async {
     try {
       final response = await http.get(
@@ -241,6 +281,12 @@ class ESP32Service {
       ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
+        // Ajouter à l'historique
+        await HistoryService().addOperation(
+          operation: 'Seuil Lumière Modifié',
+          details: 'Seuil lumière: $value (${enabled ? 'activé' : 'désactivé'})',
+          user: user,
+        );
         return json.decode(response.body);
       }
       return null;

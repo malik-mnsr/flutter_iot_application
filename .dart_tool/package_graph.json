@@ -21,6 +21,7 @@
         "flutter_lints",
         "http",
         "image_picker",
+        "intl",
         "shared_preferences",
         "smooth_page_indicator",
         "the_apple_sign_in",
@@ -131,6 +132,15 @@
         "image_picker_macos",
         "image_picker_platform_interface",
         "image_picker_windows"
+      ]
+    },
+    {
+      "name": "intl",
+      "version": "0.18.1",
+      "dependencies": [
+        "clock",
+        "meta",
+        "path"
       ]
     },
     {
@@ -489,6 +499,11 @@
       ]
     },
     {
+      "name": "clock",
+      "version": "1.1.2",
+      "dependencies": []
+    },
+    {
       "name": "web",
       "version": "1.1.1",
       "dependencies": []
@@ -766,11 +781,6 @@
         "meta",
         "path"
       ]
-    },
-    {
-      "name": "clock",
-      "version": "1.1.2",
-      "dependencies": []
     },
     {
       "name": "_flutterfire_internals",
