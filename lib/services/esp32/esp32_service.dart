@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model/user.dart';
-import '../services/history_service.dart';
+import '../../model/user/user.dart';
+import '../history/history_service.dart';
 
 class SensorData {
   final double temperature;

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_iot_application/constants.dart';
-import 'package:flutter_iot_application/services/history_service.dart'; // AJOUT OPPORTUNEL
-import 'package:flutter_iot_application/ui/auth/authentication_bloc.dart';
+import 'package:flutter_iot_application/services/history/history_service.dart'; // AJOUT OPPORTUNEL
+import 'package:flutter_iot_application/ui/auth/authentication/authentication_bloc.dart';
 import 'package:flutter_iot_application/ui/auth/launcherScreen/launcher_screen.dart';
 import 'package:flutter_iot_application/ui/loading_cubit.dart';
 

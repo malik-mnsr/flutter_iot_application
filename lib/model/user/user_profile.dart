@@ -1,4 +1,4 @@
-import './user.dart';
+import 'user.dart';
 class UserProfile {
   final String userId;
   final String email;

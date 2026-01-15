@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../model/history/history.dart';
-import '../../services/history_service.dart';
+import '../../services/history/history_service.dart';
 import '../../constants.dart';
 
 class HistoryScreen extends StatefulWidget {

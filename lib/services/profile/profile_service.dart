@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import '../model/user.dart';
-import '../model/user_profile.dart';
-import '../services/history_service.dart';
+import '../../model/user/user.dart';
+import '../../model/user/user_profile.dart';
+import '../history/history_service.dart';
 
 class ProfileService {
   static final ProfileService _instance = ProfileService._internal();

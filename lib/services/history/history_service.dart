@@ -1,8 +1,8 @@
 // services/history_service.dart
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../model/history/history.dart';
-import '../model/user.dart';
+import '../../model/history/history.dart';
+import '../../model/user/user.dart';
 
 class HistoryService {
   static final HistoryService _instance = HistoryService._internal();

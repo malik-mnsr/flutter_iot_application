@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../constants.dart';
-import '../../model/user.dart';
-import '../../model/user_profile.dart';
-import '../../services/profile_service.dart';
-import '../../services/history_service.dart';
+import '../../model/user/user.dart';
+import '../../model/user/user_profile.dart';
+import '../../services/profile/profile_service.dart';
+import '../../services/history/history_service.dart';
 import '../../model/history/history.dart';
 
 class ProfileScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iot_application/services/authenticate.dart';
+import 'package:flutter_iot_application/services/authenticate/authenticate.dart';
 
 part 'reset_password_state.dart';
 

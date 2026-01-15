@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iot_application/constants.dart';
 import 'package:flutter_iot_application/services/helper.dart';
-import 'package:flutter_iot_application/ui/auth/authentication_bloc.dart';
+import 'package:flutter_iot_application/ui/auth/authentication/authentication_bloc.dart';
 import 'package:flutter_iot_application/ui/auth/signUp/sign_up_bloc.dart';
 import 'package:flutter_iot_application/ui/home/home_screen.dart';
 import 'package:flutter_iot_application/ui/loading_cubit.dart';

@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_iot_application/constants.dart';
-import 'package:flutter_iot_application/model/user.dart';
+import 'package:flutter_iot_application/model/user/user.dart';
 import 'package:flutter_iot_application/services/helper.dart';
 import 'package:the_apple_sign_in/the_apple_sign_in.dart' as apple;
 

@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
-import '../../model/user.dart';
-import '../../services/esp32_service.dart';
+import '../../model/user/user.dart';
+import '../../services/esp32/esp32_service.dart';
 import '../../services/helper.dart';
 
 class LEDControlScreen extends StatefulWidget {

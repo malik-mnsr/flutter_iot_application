@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter_iot_application/constants.dart';
-import 'package:flutter_iot_application/model/user.dart';
-import 'package:flutter_iot_application/services/authenticate.dart';
+import 'package:flutter_iot_application/model/user/user.dart';
+import 'package:flutter_iot_application/services/authenticate/authenticate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'authentication_event.dart';
