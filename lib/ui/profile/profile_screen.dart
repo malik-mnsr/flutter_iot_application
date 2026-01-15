@@ -34,12 +34,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<List<OperationHistory>> _getRecentActivities() async {
-    await _historyService.initialize();
+    // Ajoutez le userId comme paramètre
+    await _historyService.initialize(widget.user.userID);
     final history = _historyService.getHistory();
-    return history
-        .where((item) => item.userId == widget.user.userID)
-        .take(10)
-        .toList();
+
+    // Vous n'avez plus besoin de filtrer par userId car l'initialize
+    // a déjà chargé l'historique de cet utilisateur
+    return history.take(10).toList();
   }
 
   Future<void> _refreshData() async {

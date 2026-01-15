@@ -27,6 +27,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
+  firebase_messaging: ^16.1.0
+  flutter_local_notifications: ^16.2.0
+  overlay_support: ^2.1.0
+
 
 
 flutter_icons:

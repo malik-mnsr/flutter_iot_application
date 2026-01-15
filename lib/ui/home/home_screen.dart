@@ -358,10 +358,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Dans la liste des pages
     final List<Widget> pages = [
       _buildDashboardPage(),
       LEDControlScreen(user: widget.user),
-      const HistoryScreen(),
+      HistoryScreen(userId: widget.user.userID), // ✅ AJOUT du userId
       _buildSettingsPage()
     ];
 

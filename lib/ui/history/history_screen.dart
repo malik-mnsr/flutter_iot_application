@@ -1,12 +1,14 @@
 // ui/history/history_screen.dart
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../constants.dart';
 import '../../model/history/history.dart';
 import '../../services/history/history_service.dart';
-import '../../constants.dart';
 
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({Key? key}) : super(key: key);
+  final String userId; // NOUVEAU: ajouter userId
+
+  const HistoryScreen({Key? key, required this.userId}) : super(key: key);
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();
@@ -25,7 +27,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   Future<void> _loadHistory() async {
     setState(() => _isLoading = true);
-    await _historyService.initialize();
+    await _historyService.initialize(widget.userId);
     _history = _historyService.getHistory();
     setState(() => _isLoading = false);
   }
@@ -44,7 +46,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ElevatedButton(
             onPressed: () async {
               Navigator.pop(context);
-              await _historyService.clearHistory();
+              await _historyService.clearHistory(widget.userId);
               await _loadHistory();
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -89,7 +91,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           children: [
             Text(
               item.formattedDate,
-              style: const TextStyle(fontSize: 12, color: Colors.grey),
+              style:  const TextStyle(fontSize: 12, color: Colors.grey),
             ),
             Text(
               DateFormat('HH:mm').format(item.timestamp),
@@ -102,7 +104,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   }
 
   Color _getOperationColor(String operation) {
-    if (operation.toLowerCase().contains('allumée')) return Colors.green;
+    if (operation. toLowerCase().contains('allumée')) return Colors.green;
     if (operation.toLowerCase().contains('éteinte')) return Colors.red;
     if (operation.toLowerCase().contains('basculée')) return Colors.blue;
     if (operation.toLowerCase().contains('seuil')) return Colors.orange;
@@ -123,7 +125,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Historique des Opérations'),
-        backgroundColor: const Color(COLOR_PRIMARY),
+        backgroundColor:  const Color(COLOR_PRIMARY),
         actions: [
           if (_history.isNotEmpty)
             IconButton(
@@ -145,7 +147,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.history, size: 64, color: Colors.grey.shade400),
+            Icon(Icons.history, size: 64, color: Colors.grey. shade400),
             const SizedBox(height: 16),
             const Text(
               'Aucune opération enregistrée',
