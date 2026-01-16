@@ -96,7 +96,7 @@ class ESP32Service {
     try {
       final response = await http.get(
         Uri.parse('$baseUrl/on'),
-      ).timeout(const Duration(seconds: 5));
+      ).timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         // Ajouter à l'historique

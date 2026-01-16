@@ -7,7 +7,9 @@ import '../../services/esp32/esp32_service.dart';
 import '../../services/helper.dart';
 import '../auth/authentication/authentication_bloc.dart';
 import '../auth/welcome/welcome_screen.dart';
+import '../dashboard/dashboard_screen.dart';
 import '../history/history_screen.dart';
+import '../json_viewer/json_viewer_screen.dart';
 import '../profile/profile_screen.dart';
 import 'led_control_screen.dart';
 
@@ -363,6 +365,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _buildDashboardPage(),
       LEDControlScreen(user: widget.user),
       HistoryScreen(userId: widget.user.userID), // ✅ AJOUT du userId
+      _buildVisualizationPage(), // ✅ NOUVEAU: Page visualisations
       _buildSettingsPage()
     ];
 
@@ -425,18 +428,20 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: pages[_selectedIndex],
       ),
+      // Dans _HomeScreenState.build() - modifier le BottomNavigationBar :
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
           BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'LED'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Historique'),
+          BottomNavigationBarItem(icon: Icon(Icons.analytics), label: 'Visualisations'), // NOUVEAU
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Paramètres'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: const Color(FACEBOOK_BUTTON_COLOR),
         unselectedItemColor: Colors.deepPurple,
-        backgroundColor: Colors.black,
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
@@ -740,7 +745,60 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+// ==================== ONGLET 4: VISUALISATIONS ====================
+  Widget _buildVisualizationPage() {
+    return DefaultTabController(
+      length: 2, // Deux onglets: Dashboard et Vue JSON
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color(COLOR_PRIMARY),
+          elevation: 0,
+          flexibleSpace: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TabBar(
+                tabs: [
+                  Tab(
+                    icon: const Icon(Icons.dashboard),
+                    text: 'Dashboard',
+                    iconMargin: const EdgeInsets.only(bottom: 4),
+                  ),
+                  Tab(
+                    icon: const Icon(Icons.data_object),
+                    text: 'Vue JSON',
+                    iconMargin: const EdgeInsets.only(bottom: 4),
+                  ),
+                ],
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.white70,
+                indicatorColor: Colors.white,
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorWeight: 3,
+                labelStyle: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+                unselectedLabelStyle: const TextStyle(
+                  fontSize: 13,
+                ),
+                overlayColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1)),
+              ),
+            ],
+          ),
+          automaticallyImplyLeading: false,
+        ),
+        body: TabBarView(
+          children: [
+            // Onglet 1: Dashboard
+            DashboardScreen(user: widget.user),
 
+            // Onglet 2: Vue JSON
+            JsonViewerScreen(user: widget.user),
+          ],
+        ),
+      ),
+    );
+  }
   Widget _buildSettingsPage() {
     return ListView(
       padding: const EdgeInsets.all(16),
